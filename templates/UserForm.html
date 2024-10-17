@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .cv-form label{
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            text-align:left;
+    }.cv-form input{
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+    }.cv-form textarea{
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+    }.cv-form input[type="submit"]{
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+    }
+    .cv-form input[type="submit"]:hover{
+            background-color: #444;
+    }
+    .spacer {
+            margin-bottom: 40px; /* Adjust the value as needed */
+        }
+    
+</style>
+<body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-14 offset-md-3">
+                    <h1 class="text-center spacer">Fill the form to generate Resume</h1>
+                    <form class="cv-form" action="{% url 'submitform' %}" method="POST">
+                        {% csrf_token %}
+                            {{form}} 
+                     
+                         <!-----  Submit button here ----->
+                         <div class="text-center spacer">
+                            <button type="button" class="btn btn-primary btn-lg">Submit the form</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+
+{% endblock %}

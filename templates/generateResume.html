@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .customer-profile {
+            margin-top: 20px;
+        }
+        .profile-header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-size: 18px;
+        }
+        .profile-section {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            background-color: #fafafa;
+        }
+        .profile-section p {
+            margin: 5px 0;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+         
+    
+</style>
+<body>
+    <div class="container">
+        <h1>RESUME</h1>
+    
+        <!-- Start of each customer profile -->
+        <div class="customer-profile">
+            <div class="profile-header">Profile Name: {{ userprofile.previous_work}}</div>
+            <div class="profile-section">
+                <p class="section-title">Name:</p>
+                <p>{{ userprofile.name}}</p>
+            </div>
+            <div class="profile-section">
+                <p class="section-title">Email:</p>
+                <p>{{ userprofile.email}}</p>
+            </div>
+            <div class="profile-section">
+                <p class="section-title">Phone:</p>
+                <p>{{ userprofile.phone}}</p>
+            </div>
+            <div class="profile-section">
+                <p class="section-title">Address:</p>
+                <p>{{ userprofile.address}}, {{ userprofile.city}}</p>
+            </div>
+            <div class="profile-section">
+                <p class="section-title">Country:</p>
+                <p> {{ userprofile.country}}</p>
+            </div>
+
+            <div class="profile-section">
+                <p class="section-title">Summary:</p>
+                <p> {{ userprofile.summary}}</p>
+            </div>
+
+            <div class="profile-section">
+                <p class="section-title">School:</p>
+                <p> {{ userprofile.school}}</p>
+            </div>
+
+            <div class="profile-section">
+                <p class="section-title">Highest Degree:</p>
+                <p> {{ userprofile.degree}}</p>
+            </div>
+
+            <div class="profile-section">
+                <p class="section-title">College/University:</p>
+                <p> {{ userprofile.university}}</p>
+            </div>
+
+            <div class="profile-section">
+                <p class="section-title">Skills:</p>
+                <p> {{ userprofile.skills}}</p>
+            </div>
+        </div>
+        <div style="text-align: center; padding-top: 2px;">
+             
+            <!-----  Submit button here ----->
+            <button id="printButton" onclick="printPage()" class="btn btn-primary btn-lg">Click to Print</button>
+            <button id="pdfButton" onclick="pdfPage()" class="btn btn-primary btn-lg">Click to Generate PDF File</button>
+        </div>
+        
+    
+    </div>   
+    <script>
+        function printPage() {
+            // Hide the button
+            document.getElementById('printButton').style.display = 'none';
+            document.getElementById('pdfButton').style.display = 'none';
+            
+            // Trigger the print dialog
+            window.print();
+        }
+
+        function pdfPage() {
+            // Hide the button
+            document.getElementById('printButton').style.display = 'none';
+            document.getElementById('pdfButton').style.display = 'none';
+            
+            // Trigger the submit dialog
+            onsubmit="{% url 'generatepdf' %}?id={{ userprofile.id }}"
+             
+        }
+    </script>     
+{% endblock %}
+ 

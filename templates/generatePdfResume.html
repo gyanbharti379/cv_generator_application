@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+</style>
+<body>
+    <h1>Form data save successfully</h1>
+    <section>
+        <h2>User Details</h2>
+        <!-- Placeholder for all user details -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email Id</th>
+                    <th>Phone No</th>   
+                </tr>
+            </thead>
+            <tbody>
+               
+                <tr>
+                    <td>{{ profile.name}}</td>
+                    <td>{{ profile.email}}</td>
+                    <td>{{ profile.phone}}</td>
+                    
+                    <td>
+     
+                        <form action="{% url 'generatecvform' %}" method="post">
+                            {% csrf_token %}
+                             <!-----  Submit button here ----->
+                        <button type="submit" class="btn btn-primary w-25">Submit</button>
+                        </form>
+                    
+                    </td>
+                </tr>
+                   
+                <!-- Add more rows for additional customers -->
+            </tbody>
+        </table>
+
+    </section>
+{% endblock %}

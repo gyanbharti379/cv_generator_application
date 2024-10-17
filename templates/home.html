@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* Container holding both frames */
+    .container {
+            display: flex; /* Flexbox layout */
+            justify-content: space-between; /* Distribute space between the frames */
+            padding: 20px;
+        }
+/* Text frame */
+        .text-frame {
+            flex: 1; /* Take 1 part of the available space */
+            padding: 20px;
+            background-color: #f0f0f0;
+            margin-right: 20px; /* Space between text and image frame */
+        }
+
+        /* Image frame */
+        .image-frame {
+            flex: 1; /* Take 1 part of the available space */
+            padding: 20px;
+            background-color: #e0e0e0;
+        }
+
+        /* Style for the images */
+        .image-frame img {
+            width: 100%; /* Image will take the full width of the container */
+            height: auto;
+        }
+
+    </style>    
+ 
+<!-- Image Carousel -->
+<div id="carouselIndicators" class="carousel slide" data-bs-ride="carousel">
+    <!-- Indicators -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+
+    <!-- Carousel Items (Slides) -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="/media/images/02.png" class="d-block w-80 h-50" alt="Slide 1">
+        </div>
+        <div class="carousel-item">
+            <img src="/media/images/03.png" class="d-block w-80 h-50" alt="Slide 2">
+        </div>
+        <div class="carousel-item">
+            <img src="/media/images/04.png" class="d-block w-80 h-50" alt="Slide 3">
+        </div>
+    </div>
+
+    <!-- Previous/Next Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+ <!-- Main container holding both frames -->
+ <div class="container">
+   
+
+    <!-- Image Frame -->
+    <div class="image-frame">
+        <img src="/media/images/01.png" alt="Sample Image">
+    </div>
+
+     <!-- Text Frame -->
+     <div class="text-frame">
+        <h2>Make Your Resume like this</h2>
+        <p>Easily create the perfect resume for any job using our best-in-class resume builder platform.</p>
+        <button class="btn btn-primary" onclick="location.href='{% url 'userform' %}'">Create My Resume Now</button>
+
+        <!-- Hidden file input -->
+        <input type="file" id="fileInput" style="display: none;" accept=".doc,.docx" onchange="showFileName()">
+
+        <!-- Button to trigger file input -->
+        <button type="button" class="btn btn-secondary" onclick="document.getElementById('fileInput').click();">Import Resume</button>
+
+        <p id="fileName"></p> <!-- To display the chosen file name -->
+
+        <img src="/media/images/offer01.png" class="img-fluid" alt="offerfirst">
+        <p class="mt-4">Our online resume builder offers a quick and easy way to create your professional resume from 50+ design templates. Create a resume using our AI resume builder feature, plus take advantage of experts suggestions and customization modern and professional resume templates. free users have access to our easy-to-use tool and text file.</p>
+    </div>
+
+</div>
+
+<!-- Include Bootstrap JS (required for carousel functionality) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // JavaScript function to display the chosen file name
+    function showFileName() {
+        var input = document.getElementById('fileInput');
+        var fileName = input.files[0].name;
+        document.getElementById('fileName').textContent = "Selected File: " + fileName;
+    }
+</script>
+  
+{% endblock %} 
