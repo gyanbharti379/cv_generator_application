@@ -7,18 +7,30 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
+            padding: 20px;
             margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
             background-color: #fff;
+            margin-right: 20px;
+            margin-left: 20px;
+         
         }
+            
         th, td {
             padding: 10px;
             border-bottom: 1px solid #ccc;
             text-align: left;
+            
         }
         th {
             background-color: #333;
@@ -31,9 +43,18 @@
             margin-top: 10px;
             margin-bottom: 50px;
         }
+        h1{
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+       
 </style>
 <body>
-    <h1 class="text-center">List of Users</h1>
+    
+    
+    <h1>List of Users</h1>
     <section>
         <!-- Placeholder for all user details -->
         <table class="table spacer">
@@ -55,7 +76,7 @@
                     <td>{{ userprofile.phone}}</td>
                     <td> 
                         <form action="{% url 'showdetails' userprofile.id %}" method="get">
-                            <button type="submit" class="btn btn-primary w-50">Show Details</button>
+                            <button type="submit" class="btn btn-primary w-75">Show Details</button>
                         </form>
                             
                     

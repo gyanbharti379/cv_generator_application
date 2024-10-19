@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<style>
+    .card{
+        margin-top: 20px;
+        margin-bottom: 80px;
+    }
+</style>
     <div class="alert alert-success" role="alert">
         {% if success == True %}
         <h4 class="alert-heading">Well done!</h4>
@@ -18,7 +23,7 @@
                 <div class="card">
                     <div class="card-header bg-primary text-white">
                         {% if success == True %}
-                        <h1>Hello User</h1>
+                        <h1>Hello {{ name }}</h1>
                     {% else %}
                         <h1>Something went wrong</h1>
                     {% endif %}
@@ -29,7 +34,7 @@
                     </div>
                     <div class="card-footer text-center">
                         <form action="{% url 'showdetails' id %}" method="get">
-                            <button type="submit" class="btn btn-primary w-50">Show Details</button>
+                            <button type="submit" class="btn btn-primary w-50">Show Your Details</button>
                         </form>
                     </div>
                 </div>
